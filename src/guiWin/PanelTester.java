@@ -1,7 +1,6 @@
 package guiWin;
 import javax.swing.*;
 import java.awt.*;
-import java.util.Random;
 
 public class PanelTester 
 {
@@ -25,35 +24,16 @@ public class PanelTester
 		
 		Container pane = win.getContentPane();
 		pane.setLayout(new GridLayout(rows, cols));
-		Random gen = new Random();
-		BigPanel arr[] = new BigPanel[rows * cols + 1];
+		//Random gen = new Random();
+		BiggerPanel master = new BiggerPanel(rows, cols);
 		
-		for(int i = 1; i <= rows * cols; i++)
+		for(int i = 0; i <= rows * cols - 1; i++)
 		{
-			int red = gen.nextInt(256);
-			int green = gen.nextInt(256);
-			int blue = gen.nextInt(256);
-			Color backColor = new Color(red, green, blue);
-			BigPanel panel = new BigPanel(backColor);
-			arr[i] = panel;
-			pane.add(panel);
+			pane.add(master.flow[i]);
 		}
 		
 		win.setVisible(true);
-		
-	/*	JPanel panel = new JPanel();
-		JPanel panel2 = new JPanel() ;
-		
-		panel.setBackground(Color.blue);
-		pane.add(panel);
-		pane.add(panel2);
-	
-		
-		System.out.println(panel.getWidth() + "\n" + panel.getHeight());	*/
 
 	}
-	/*public static BigPanel pos(int x,int y) {
-		return arr[y*rows-rows+1+x];
-	} */
 
 }

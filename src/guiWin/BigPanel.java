@@ -1,10 +1,8 @@
 package guiWin;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Random;
 
-public class BigPanel extends JPanel
+public class BigPanel extends BiggerPanel
 {
 	private Color color;
 	private boolean selected;
@@ -47,13 +45,6 @@ public class BigPanel extends JPanel
 		color = c;
 	}
 	
-	private Color randColor()
-	{
-		Random ge = new Random();
-		Color c = new Color(ge.nextInt(256), ge.nextInt(256), ge.nextInt(256));
-		return c;
-	}
-	
 	public boolean containsPoint(int x, int y)
 	{
 		int height = getHeight();
@@ -88,7 +79,7 @@ public class BigPanel extends JPanel
 	{
 		public void mouseDragged(MouseEvent e)
 		{
-			int newX = e.getX();
+			/*int newX = e.getX();
 			int newY = e.getY();
 			int dx = newX - q;
 			int dy = newY - w;
@@ -96,7 +87,7 @@ public class BigPanel extends JPanel
 				color = randColor();
 			q = newX;
 			w = newY;
-			repaint();	
+			repaint();	*/
 		}
 	}
 	

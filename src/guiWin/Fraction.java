@@ -1,4 +1,4 @@
-package fractionClassProjects;
+package guiWin;
 //A number with both a numerator and a denomenator
 public class Fraction {
 	//Global Denominator and Numerator

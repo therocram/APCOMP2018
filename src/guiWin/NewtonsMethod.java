@@ -1,4 +1,4 @@
-package growth;
+package guiWin;
 //Finding a root or an exponent of a BigDecimal using Newton's Method
 
 import java.math.*;
