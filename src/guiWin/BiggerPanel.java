@@ -9,6 +9,7 @@ public class BiggerPanel extends JPanel
 {
 	private int x, y;
 	private int q, w;
+	private Color draw;
 	BigPanel flow[];
 	
 	public BiggerPanel()
@@ -44,11 +45,36 @@ public class BiggerPanel extends JPanel
 	{
 		public void mouseDragged(MouseEvent e)
 		{
-			Color c = randColor();
+			draw = randColor();
 			int newX;
 			int newY;
-			//int dx = newX - q;
-			//int dy = newY - w; 
+			int dx;
+			int dy; 
+			for(int i = 0; i <= x * y - 1; i++)
+			{
+				newX = e.getX();
+				newY = e.getY();
+				dx = newX - q;
+				dy = newY - w;
+				BigPanel panel = flow[i];
+				int height = panel.getHeight();
+				int width = panel.getWidth();
+				int a = panel.getX();
+				int b = panel.getY();
+				boolean point = (dx >= b && dx <= b + height) && (dy >= a && dy <= a + width);
+				if(point)
+					panel.setColor(draw);
+				repaint();
+				q = newX;
+				w = newX;
+			}	
+		}
+		
+		/*public void mouseMoved(MouseEvent e)
+		{
+			int newX;
+			int newY;
+			
 			for(int i = 0; i <= x * y - 1; i++)
 			{
 				newX = e.getX();
@@ -60,12 +86,12 @@ public class BiggerPanel extends JPanel
 				int b = panel.getY();
 				boolean point = (newX >= b && newX <= b + height) && (newY >= a && newY <= a + width);
 				if(point)
-					panel.setColor(c);
+					panel.setColor(draw);
+				repaint();
 				q = newX;
 				w = newX;
-				repaint();
-			}
-		}
+			}	
+		}*/
 	}
 	
 }
