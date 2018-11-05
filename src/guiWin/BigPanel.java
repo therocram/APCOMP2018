@@ -8,13 +8,13 @@ public class BigPanel extends BiggerPanel
 	private boolean selected;
 	private int q, w;
 	
-	public BigPanel()
+	public BigPanel()   // Default constructor. Makes white (HAPPY!?!?!??!)
 	{
 		this(Color.WHITE);
 		setBackground(Color.white);
 	}
 	
-	public BigPanel(Color c)
+	public BigPanel(Color c)	// 
 	{
 		setBackground(c);
 		color = c;

@@ -27,12 +27,16 @@ public class PanelTester
 		//Random gen = new Random();
 		BiggerPanel master = new BiggerPanel(rows, cols);
 		
+		System.out.println(master.getCoordinates());
+		
 		for(int i = 0; i <= rows * cols - 1; i++)
 		{
 			pane.add(master.flow[i]);
 		}
 		
 		win.setVisible(true);
+		
+		
 
 	}
 
