@@ -4,6 +4,7 @@ import java.awt.event.*;
 
 public class BigPanel extends BiggerPanel
 {
+	final static long serialVersionUID = 1;
 	private Color color;
 	private boolean selected;
 	private int q, w;

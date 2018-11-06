@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class BiggerPanel extends JPanel
 {
+	final static long serialVersionUID = 2;
 	private int x, y; // Size of array x = rows, y = columns
 	private int q, w; // Mouse coordinates: x and y respectively
 	private Color draw; // Color being used with mouse drags
@@ -68,19 +69,7 @@ public class BiggerPanel extends JPanel
 		public void mouseDragged(MouseEvent e)
 		{
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 			/*draw = randColor();  // Sets new random draw color
 			
 			int newX;    // Used to keep track of new mouse coordinates
