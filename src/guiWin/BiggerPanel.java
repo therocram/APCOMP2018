@@ -10,8 +10,9 @@ public class BiggerPanel extends JPanel
 	final static long serialVersionUID = 2;
 	private int x, y; // Size of array x = rows, y = columns
 	private int q, w; // Mouse coordinates: x and y respectively
-	private Color draw; // Color being used with mouse drags
+	//private Color draw; // Color being used with mouse drags
 	BigPanel flow[]; // Array containing subclass visual panels
+	BigPanel clickedPanel = null;
 	
 	public BiggerPanel()  // Default constructor
 	{
@@ -55,11 +56,35 @@ public class BiggerPanel extends JPanel
 		{
 			q = e.getX();
 			w = e.getY();
+			Point p;
+			
+			for(int i = 0; i <= x * y - 1; i++)   // Checks all panels for mouse coordinates and changes color
+			{	
+				
+				
+				/*int height = panel.getHeight(); // Pertinent panel information
+				int width = panel.getWidth();
+				int a = panel.getX();
+				int b = panel.getY();
+				
+				boolean point = (w >= b && w <= b + height) && (q >= a && q <= a + width);*/ // Checks to see if distance between old and 
+																							   // new mouse coordinates is within the current
+																							   // panel
+				p = SwingUtilities.convertPoint(BiggerPanel.this, e.getPoint(), flow[i]);
+				
+				if(flow[i].getBounds().contains(e.getPoint()))					// Sets panel color to new draw color if above is true
+					clickedPanel = flow[i]; 
+				
+			}	
 		}
 		
 		public void mouseReleased(MouseEvent e)
 		{
-			
+			q = e.getX();
+			w = e.getY();
+			if(clickedPanel != null)
+				clickedPanel.setColor(randColor());
+			repaint();
 		}
 	}
 	
