@@ -6,7 +6,6 @@ public class BigPanel extends BiggerPanel
 {
 	final static long serialVersionUID = 1;
 	private Color color;
-	private boolean selected;
 	private int q, w;
 	
 	public BigPanel()   // Default constructor. Makes white (HAPPY!?!?!??!)
@@ -17,9 +16,8 @@ public class BigPanel extends BiggerPanel
 	
 	public BigPanel(Color c)	// 
 	{
-		setBackground(c);
 		color = c;
-		selected = false;
+		setBackground(c);
 		addMouseListener(new PanelListener());
 		addMouseMotionListener(new PanelMotionListener());
 	}
@@ -62,15 +60,13 @@ public class BigPanel extends BiggerPanel
 		{
 			q = e.getX();
 			w = e.getY();
-			if(containsPoint(q, w))
-				selected = true;
+			if(containsPoint(q, w)) {}
 		}
 		
 		public void mouseReleased(MouseEvent e)
 		{
 			q = e.getX();
 			w = e.getY();
-			selected = false;
 			color = randColor();
 			repaint();
 		}

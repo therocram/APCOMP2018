@@ -54,13 +54,10 @@ public class BiggerPanel extends JPanel
 	{
 		public void mousePressed(MouseEvent e)
 		{
-			q = e.getX();
-			w = e.getY();
 			Point p;
 			
 			for(int i = 0; i <= x * y - 1; i++)   // Checks all panels for mouse coordinates and changes color
 			{	
-				
 				
 				/*int height = panel.getHeight(); // Pertinent panel information
 				int width = panel.getWidth();
@@ -72,18 +69,20 @@ public class BiggerPanel extends JPanel
 																							   // panel
 				p = SwingUtilities.convertPoint(BiggerPanel.this, e.getPoint(), flow[i]);
 				
-				if(flow[i].getBounds().contains(e.getPoint()))					// Sets panel color to new draw color if above is true
+				if(flow[i].getBounds().contains(p))					// Sets panel color to new draw color if above is true
 					clickedPanel = flow[i]; 
+				
 				
 			}	
 		}
 		
 		public void mouseReleased(MouseEvent e)
 		{
-			q = e.getX();
-			w = e.getY();
 			if(clickedPanel != null)
+			{
 				clickedPanel.setColor(randColor());
+				clickedPanel.setBackground(randColor());
+			}
 			repaint();
 		}
 	}
