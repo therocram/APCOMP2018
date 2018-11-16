@@ -25,7 +25,7 @@ public class PanelTester
 		Container pane = win.getContentPane();
 		pane.setLayout(new GridLayout(rows, cols));
 		//Random gen = new Random();
-		BiggerPanel master = new BiggerPanel(rows, cols);
+		BiggerPanel master = new BiggerPanel(rows, cols, BiggerPanel.randColor());
 		
 		System.out.println(master.getCoordinates());
 		

@@ -6,7 +6,7 @@ public class BigPanel extends BiggerPanel
 {
 	final static long serialVersionUID = 1;
 	private Color color;
-	private int q, w;
+	private static boolean paint;
 	
 	public BigPanel()   // Default constructor. Makes white (HAPPY!?!?!??!)
 	{
@@ -14,12 +14,11 @@ public class BigPanel extends BiggerPanel
 		setBackground(Color.white);
 	}
 	
-	public BigPanel(Color c)	// 
+	public BigPanel(Color c)	
 	{
 		color = c;
 		setBackground(c);
 		addMouseListener(new PanelListener());
-		addMouseMotionListener(new PanelMotionListener());
 	}
 	
 	public void paintComponent(Graphics g)
@@ -44,47 +43,27 @@ public class BigPanel extends BiggerPanel
 		color = c;
 	}
 	
-	public boolean containsPoint(int x, int y)
-	{
-		int height = getHeight();
-		int width = getWidth();
-		int a = getX();
-		int b = getY();
-		boolean point = (x >= b && x <= b + height) && (x >= a && x <= a + width);
-		return point;
-	}
-	
 	private class PanelListener extends MouseAdapter
 	{
 		public void mousePressed(MouseEvent e)
 		{
-			q = e.getX();
-			w = e.getY();
-			if(containsPoint(q, w)) {}
+			paint = true;
 		}
 		
 		public void mouseReleased(MouseEvent e)
 		{
-			q = e.getX();
-			w = e.getY();
-			color = randColor();
-			repaint();
+			paint = false;
 		}
-	}
-	
-	private class PanelMotionListener extends MouseMotionAdapter
-	{
-		public void mouseDragged(MouseEvent e)
+		
+		public void mouseEntered(MouseEvent e)
 		{
-			/*int newX = e.getX();
-			int newY = e.getY();
-			int dx = newX - q;
-			int dy = newY - w;
-			if(containsPoint(dx + newX, dy + newY))
+			if(paint)
+			{
 				color = randColor();
-			q = newX;
-			w = newY;
-			repaint();	*/
+				repaint();
+			}
+				
+			
 		}
 	}
 	
