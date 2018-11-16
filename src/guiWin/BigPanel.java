@@ -19,6 +19,7 @@ public class BigPanel extends BiggerPanel
 		color = c;
 		setBackground(c);
 		addMouseListener(new PanelListener());
+		addKeyListener(new KeyMonitor());
 	}
 	
 	public void paintComponent(Graphics g)
@@ -53,6 +54,8 @@ public class BigPanel extends BiggerPanel
 		public void mouseReleased(MouseEvent e)
 		{
 			paint = false;
+			color = randColor();
+			repaint();
 		}
 		
 		public void mouseEntered(MouseEvent e)
@@ -62,12 +65,25 @@ public class BigPanel extends BiggerPanel
 				color = randColor();
 				repaint();
 			}
-				
-			
 		}
 	}
 	
-	
-	
+	private class KeyMonitor extends KeyAdapter
+	{
+		public void keyPressed(KeyEvent e)
+		{
+			switch(e.getKeyCode())
+			{
+			case KeyEvent.VK_SHIFT:
+				color = randColor();
+				repaint();
+				break;
+			case KeyEvent.VK_UP:
+				color = bigColor;
+				repaint();
+	            break;
+			}
+		}
+	}
 	
 }
