@@ -1,5 +1,8 @@
 package guiWin;
 import javax.swing.*;
+
+
+
 import java.awt.*;
 import java.util.Random;
 
@@ -53,6 +56,8 @@ public class BiggerPanel extends JPanel
 		String s = "X: " + q + "\nY: " + w;
 		return s;
 	}
+	
+	
 	
 	
 }

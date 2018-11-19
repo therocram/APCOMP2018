@@ -2,6 +2,10 @@ package guiWin;
 import java.awt.*;
 import java.awt.event.*;
 
+import javax.swing.*;
+
+
+
 public class BigPanel extends BiggerPanel
 {
 	final static long serialVersionUID = 1;
@@ -20,6 +24,13 @@ public class BigPanel extends BiggerPanel
 		setBackground(c);
 		addMouseListener(new PanelListener());
 		addKeyListener(new KeyMonitor());
+		
+
+		Action leftAction = new LeftAction();
+		this.getInputMap().put(KeyStroke.getKeyStroke("F2"), "doSomething");
+		this.getActionMap().put("doSomething", leftAction);
+
+		
 	}
 	
 	public void paintComponent(Graphics g)
@@ -78,11 +89,21 @@ public class BigPanel extends BiggerPanel
 				color = randColor();
 				repaint();
 				break;
-			case KeyEvent.VK_UP:
+			/*case KeyEvent.VK_UP:
 				color = bigColor;
 				repaint();
-	            break;
+	            break;*/
 			}
+		}
+	}
+	
+	class LeftAction extends AbstractAction
+	{
+		private static final long serialVersionUID = 1L;
+
+		public void actionPerformed(ActionEvent e)
+		{
+			color = randColor();
 		}
 	}
 	
