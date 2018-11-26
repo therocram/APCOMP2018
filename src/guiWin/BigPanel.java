@@ -1,8 +1,7 @@
 package guiWin;
 import java.awt.*;
 import java.awt.event.*;
-
-import javax.swing.*;
+//import javax.swing.*;
 
 
 
@@ -23,12 +22,6 @@ public class BigPanel extends BiggerPanel
 		color = c;
 		setBackground(c);
 		addMouseListener(new PanelListener());
-		addKeyListener(new KeyMonitor());
-		
-
-		Action leftAction = new LeftAction();
-		this.getInputMap().put(KeyStroke.getKeyStroke("F2"), "doSomething");
-		this.getActionMap().put("doSomething", leftAction);
 
 		
 	}
@@ -60,51 +53,26 @@ public class BigPanel extends BiggerPanel
 		public void mousePressed(MouseEvent e)
 		{
 			paint = true;
+			bigColor = randColor(); 
+			color = bigColor;
+			repaint();
 		}
 		
 		public void mouseReleased(MouseEvent e)
 		{
 			paint = false;
-			color = randColor();
-			repaint();
+			
 		}
 		
 		public void mouseEntered(MouseEvent e)
 		{
 			if(paint)
 			{
-				color = randColor();
-				repaint();
-			}
-		}
-	}
-	
-	private class KeyMonitor extends KeyAdapter
-	{
-		public void keyPressed(KeyEvent e)
-		{
-			switch(e.getKeyCode())
-			{
-			case KeyEvent.VK_SHIFT:
-				color = randColor();
-				repaint();
-				break;
-			/*case KeyEvent.VK_UP:
 				color = bigColor;
 				repaint();
-	            break;*/
 			}
 		}
 	}
 	
-	class LeftAction extends AbstractAction
-	{
-		private static final long serialVersionUID = 1L;
-
-		public void actionPerformed(ActionEvent e)
-		{
-			color = randColor();
-		}
-	}
 	
 }

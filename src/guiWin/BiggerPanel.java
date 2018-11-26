@@ -1,8 +1,5 @@
 package guiWin;
 import javax.swing.*;
-
-
-
 import java.awt.*;
 import java.util.Random;
 
@@ -37,6 +34,11 @@ public class BiggerPanel extends JPanel
 			flow[i] = panel;
 		}
 		
+		//addKeyListener(new KeyMonitor());
+		/*Action leftAction = new LeftAction();
+		this.getInputMap().put(KeyStroke.getKeyStroke("F2"), "doSomething");
+		this.getActionMap().put("doSomething", leftAction);*/
+		
 	}
 	
 	public BiggerPanel(BiggerPanel bp)
@@ -57,7 +59,43 @@ public class BiggerPanel extends JPanel
 		return s;
 	}
 	
+	/*private class LeftAction extends AbstractAction
+	{
+		private static final long serialVersionUID = 1L;
+
+		public void actionPerformed(ActionEvent e)
+		{
+			for(int i = 0; i <= x * y - 1; i++)  
+			{  
+				Color newColor = randColor();
+				flow[i].setColor(newColor);
+			}
+			repaint();
+		}
+	}*/
 	
+	/*private class KeyMonitor extends KeyAdapter
+	{
+		public void keyPressed(KeyEvent e)
+		{
+			switch(e.getKeyCode())
+			{
+			case KeyEvent.VK_SHIFT:
+				for(int i = 0; i <= x * y - 1; i++)
+				{
+					Color newcolor = randColor();
+					flow[i].setColor(newcolor);
+					repaint();
+				}
+				
+				break;
+			case KeyEvent.VK_UP:
+				color = bigColor;
+				repaint();
+	            break;
+			}
+		}
+	}*/
 	
 	
 }
