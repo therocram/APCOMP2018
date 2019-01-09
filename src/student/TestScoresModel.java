@@ -75,4 +75,70 @@ public class TestScoresModel
 		}
 		return s;
 	}
+	
+	public Student last()
+	{
+		Student s = null;
+		if(studentCount == 0)
+			indexSelectedStudent = -1;
+		else
+		{
+			indexSelectedStudent = studentCount - 1;
+			s = students[indexSelectedStudent];
+		}
+		return s;
+	}
+	
+	public Student currentStudent()
+	{
+		if(indexSelectedStudent == -1)
+			return null;
+		else
+			return students[indexSelectedStudent];
+	}
+	
+	public int size()
+	{
+		return studentCount;
+	}
+	
+	public int currentPosition()
+	{
+		return indexSelectedStudent;
+	}
+	
+	public int getClassAverage()
+	{
+		if(studentCount == 0)
+			return 0;
+		int sum = 0;
+		for(int i = 0; i < studentCount; i++)
+			sum += students[i].getAverage();
+		return sum / studentCount;
+	}
+	
+	public Student getHighScore()
+	{
+		if(studentCount == 0)
+			return null;
+		else
+		{
+			Student s = students[0];
+			for(int i = 1; i < studentCount; i++)
+				if(s.getHighScore() < students[i].getHighScore())
+					s = students[i];
+			
+			return s;
+		}
+	}
+	
+	public String toString()
+	{
+		String result = "";
+		for(int i = 0; i < studentCount; i++)
+			result = result + students[i] + "\n";
+		return result;
+	}
+	
+	
 }
