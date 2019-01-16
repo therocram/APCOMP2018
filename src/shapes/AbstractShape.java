@@ -36,7 +36,7 @@ abstract public class AbstractShape implements Shape {
    
    abstract public void draw (Pen p);
    
-   // These next three methods will never be changed in a subclass; therefore,
+   // These next two methods will never be changed in a subclass; therefore,
    // they are declared final, meaning they cannot be overridden.
    public final double getXPos(){
       return xPos;
@@ -46,7 +46,7 @@ abstract public class AbstractShape implements Shape {
       return yPos;
    }
 
-   public final void move (double xLoc, double yLoc){
+   public void move (double xLoc, double yLoc){
       xPos = xLoc;
       yPos = yLoc;
    }
