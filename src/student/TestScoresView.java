@@ -17,6 +17,7 @@ public class TestScoresView extends JFrame
 	private JButton lastButton		= new JButton(">>");
 	private JButton highScoreButton	= new JButton("Highest Score");
 	private JButton aveScoreButton	= new JButton("Class Average");
+	private JButton newCellButton = new JButton("New Blank");
 	
 	private JLabel nameLabel	= new JLabel("Name");
 	private JLabel test1Label	= new JLabel("Test 1");
@@ -89,12 +90,16 @@ public class TestScoresView extends JFrame
 		southPanel.add(previousButton);
 		southPanel.add(nextButton);
 		southPanel.add(lastButton);
+		southPanel.add(newCellButton);
 		
 		addButton.addActionListener(new AddListener());
+		modifyButton.addActionListener(new ModifyListener());
 		previousButton.addActionListener(new PreviousListener());
 		nextButton.addActionListener(new NextListener());
 		firstButton.addActionListener(new FirstListener());
 		lastButton.addActionListener(new LastListener());
+		highScoreButton.addActionListener(new HighScoreListener());
+		aveScoreButton.addActionListener(new AveScoreListener());
 		///////////
 		setTitle("Student Test Scores");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -131,9 +136,32 @@ public class TestScoresView extends JFrame
 	private Student getInfoFromScreen()
 	{
 		Student s = new Student(nameField.getText());
-		s.setScore(1,  Integer.parseInt(test1Field.getText()));
-		s.setScore(2,  Integer.parseInt(test2Field.getText()));
-		s.setScore(3,  Integer.parseInt(test3Field.getText()));
+		try 
+		{
+			s.setScore(1,  Integer.parseInt(test1Field.getText()));
+		}
+		catch(Exception e)
+		{
+			s.setScore(1, 0);
+		}
+		
+		try 
+		{
+			s.setScore(2,  Integer.parseInt(test2Field.getText()));
+		}
+		catch(Exception e)
+		{
+			s.setScore(2, 0);
+		}
+		
+		try 
+		{
+			s.setScore(3,  Integer.parseInt(test3Field.getText()));
+		}
+		catch(Exception e)
+		{
+			s.setScore(3, 0);
+		}
 		
 		return s;
 	}
@@ -146,15 +174,25 @@ public class TestScoresView extends JFrame
 			String message = s.validateData();
 			if (message != null)
 			{
-				JOptionPane.showMessageDialog(TestScoresView.this, message);
+				JOptionPane.showMessageDialog(TestScoresView.this, message, "Program Exception", 0);
 				return;
 			}
 			
 			message = model.add(s);
 			if (message != null)
-				JOptionPane.showMessageDialog(TestScoresView.this, message);
+				JOptionPane.showMessageDialog(TestScoresView.this, message, "Program Exception", 0);
 			else
 				displayInfo();
+		}
+	}
+	
+	private class ModifyListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			Student s = getInfoFromScreen();
+			model.replace(s);
+			displayInfo();
 		}
 	}
 	
@@ -191,6 +229,31 @@ public class TestScoresView extends JFrame
 		{
 			model.last();
 			displayInfo();
+		}
+	}
+	
+	private class HighScoreListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			Student st = model.getHighScore();
+			if(st != null)
+			{
+				String s = st.getName() + ": " + st.getHighScore();
+				JOptionPane.showMessageDialog(TestScoresView.this, s, "High Score", 1);
+				displayInfo();
+			}
+			else
+				JOptionPane.showMessageDialog(TestScoresView.this, "Error: Must add a student first", "Program Exception", 0);
+		}
+	}
+	
+	private class AveScoreListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			int score = model.getClassAverage();
+			JOptionPane.showMessageDialog(TestScoresView.this, "Average Score: " + score, "Class Average", 1);
 		}
 	}
 }
