@@ -42,8 +42,11 @@ public class Magpie2
 		{
 			response = "Tell me more about your family.";
 		}
+		
+		
 		else if(statement.indexOf("cat") >= 0
-				|| statement.indexOf("dog") >= 0)
+				|| statement.indexOf("dog") >= 0
+				|| statement.indexOf("emu") >= 0)
 		{
 			response = "Tell me more about your pets";
 		}
@@ -54,6 +57,14 @@ public class Magpie2
 		else if(statement.indexOf("spaghetti") >= 0 || statement.indexOf("Spaghetti") >= 0)
 		{
 			response = "I love Itallian food!";
+		}
+		else if(statement.indexOf("Ben Shapiro") >= 0)
+		{
+			response = "Facts DO care about your feelings!";
+		}
+		else if(statement.indexOf("Dad?") >= 0 || statement.indexOf("dad?") >= 0)
+		{
+			response = "My boy, you've come home!";
 		}
 		else if(statement.trim().length() == 0)
 		{

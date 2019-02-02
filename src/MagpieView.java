@@ -2,10 +2,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
 
 public class MagpieView extends JFrame
 {
-	private Magpie2 maggie = new Magpie2();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Magpie4 maggie = new Magpie4();
 	
 	private JLabel entryLabel	= new JLabel("You");
 	private JLabel responseLabel	= new JLabel("Magpie");
@@ -15,7 +22,7 @@ public class MagpieView extends JFrame
 	
 	private JButton askButton = new JButton("Ask");
 	
-	public MagpieView(Magpie2 m)
+	public MagpieView(Magpie4 m)
 	{
 		maggie = m;
 		
@@ -41,6 +48,8 @@ public class MagpieView extends JFrame
 		responseField.setText(maggie.getGreeting());
 		
 		askButton.addActionListener(new AskListener());
+	
+		getRootPane().setDefaultButton(askButton);
 		
 		setTitle("Magpie Chat Bot");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,7 +64,8 @@ public class MagpieView extends JFrame
 		public void actionPerformed(ActionEvent e)
 		{
 			 responseField.setText(maggie.getResponse(entryField.getText()));
-			 entryField.setText("");
+			 //entryField.setText("");
 		}
 	}
+	
 }
