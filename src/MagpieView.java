@@ -12,7 +12,7 @@ public class MagpieView extends JFrame
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Magpie4 maggie = new Magpie4();
+	private Magpie5 maggie = new Magpie5();
 	
 	private JLabel entryLabel	= new JLabel("You");
 	private JLabel responseLabel	= new JLabel("Magpie");
@@ -22,7 +22,7 @@ public class MagpieView extends JFrame
 	
 	private JButton askButton = new JButton("Ask");
 	
-	public MagpieView(Magpie4 m)
+	public MagpieView(Magpie5 m)
 	{
 		maggie = m;
 		

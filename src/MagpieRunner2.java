@@ -11,7 +11,7 @@ public class MagpieRunner2
 	 */
 	public static void main(String[] args)
 	{
-		Magpie4 maggie = new Magpie4();
+		Magpie5 maggie = new Magpie5();
 		
 		MagpieView magpie = new MagpieView(maggie);
 	
