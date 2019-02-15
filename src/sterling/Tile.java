@@ -1,85 +1,87 @@
 package sterling;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class Tile 
+import javax.swing.*;
+
+public class Tile extends JPanel
 {
-	private Color color;
-	private int centerX, centerY, radius;
+	//private Color color;
 	
-
+	//Assigns a circle to Tile
+	private Circle piece;
+	
+	////	Constructor
 	public Tile()
 	{
-		centerX = 0;
-		centerY = 0;
-		radius = 0;
-		color = new Color(0, 156, 11);
-	}
-	
-	public Tile(int x, int y, int r, Color c)
-	{
-		centerX = x;
-		centerY = y;
-		radius = r;
-		color = c;
-	}
-	
-	public Tile(Tile t)
-	{
-		centerX = t.centerX;
-		centerY = t.centerY;
-		radius = t.radius;
-		color = t.color;
-	}
-	
-	public int getY() 
-	{
-		return centerY;
-	}
-	
-	public void setY(int centerY) 
-	{
-		this.centerY = centerY;
-	}
-
-	public int getX() 
-	{
-		return centerX;
-	}
-
-	public void setX(int centerX) 
-	{
-		this.centerX = centerX;
-	}
-
-	public int getRadius() 
-	{
-		return radius;
-	}
-
-	public void setRadius(int radius) 
-	{
-		this.radius = radius;
-	}
-
-	public Color getColor() 
-	{
-		return color;
-	}
-
-	public void setColor(Color color) 
-	{
-		this.color = color;
-	}
-	
-	public void fill(Graphics g) 
-	{
-		Color oldColor = g.getColor();
-		g.setColor(color);
+		//Calls JPanel constructor
+		super();
 		
-		g.fillOval(centerX - radius, centerY - radius, radius * 2, radius * 2);
+		//Attaches senseor to detect mouse input
+		addMouseListener(new PanelListener());
 		
-		g.setColor(oldColor);
+		// Instantiates piece, setting it at a position relative to the tile
+		// and setting the color the same as the tile
+		piece = new Circle(getX() + 37, getY() + 27, 20, new Color(0, 156, 11));
 	}
+	
+	
+	//Paint class, updated every time a change is made to a piece
+	public void paintComponent(Graphics g)
+	{
+		//Calls superclass constructor
+		super.paintComponent(g);
+		
+		//color = getBackground();
+		
+		//Draws piece and fills it with corresponding color
+		piece.fill(g);
+		
+	}
+	
+	////	Mutators
+	public void setPieceColor(Color c)
+	{
+		piece.setColor(c);
+		repaint();
+	}
+	
+	public void setPieceTaken()
+	{
+		piece.taken = true;
+	}
+	
+	public void setIndex(int i) 
+	{
+		piece.setIndex(i);
+	}
+	
+	
+	////	Accessors
+	public Color getPieceColor()
+	{
+		return piece.getColor();
+	}
+
+	public int getIndex() 
+	{
+		return piece.getIndex();
+	}
+
+	
+	////	Mouse Listener Class
+	private class PanelListener extends MouseAdapter
+	{
+		//Sets selected piece on board to Tile piece when the Tile is clicked
+		public void mousePressed(MouseEvent e)
+		{
+			Board.selected = piece;
+		}
+		
+	}
+
+	
 	
 	
 	
