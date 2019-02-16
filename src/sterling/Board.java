@@ -75,7 +75,7 @@ public class Board extends JFrame
 		backboard[1 + 8].setPieceColor(Color.white);
 		backboard[1 + 8].setPieceTaken();
 		
-		backboard[2 + 16].setPieceColor(Color.black);
+		backboard[2 + 16].setPieceColor(Color.white);
 		backboard[2 + 16].setPieceTaken();
 		
 		backboard[45].setPieceColor(Color.black);
@@ -86,6 +86,19 @@ public class Board extends JFrame
 		
 		backboard[2].setPieceColor(Color.black);
 		backboard[2].setPieceTaken();
+		
+		backboard[3].setPieceColor(Color.white);
+		backboard[3].setPieceTaken();
+		
+		backboard[4].setPieceColor(Color.black);
+		backboard[4].setPieceTaken();
+		
+		backboard[8].setPieceColor(Color.white);
+		backboard[8].setPieceTaken();
+		
+		backboard[16].setPieceColor(Color.black);
+		backboard[16].setPieceTaken();
+		
 		
 		///////////
 		
@@ -104,7 +117,7 @@ public class Board extends JFrame
 		setVisible(true);
 	}
 	
-	public void place(int i)
+	/*public void place(int i)
 	{
 		int k = i;
 		
@@ -190,7 +203,7 @@ public class Board extends JFrame
 		
 		
 		return willSurround;
-	}
+	}*/
 	
 	public void horizontalCheck(int i, int direc)
 	{
@@ -211,22 +224,30 @@ public class Board extends JFrame
 					
 					selected.setColor(Color.black);
 					selected.taken = true;
+					break;
 					/*
 					turn++;
 					count++;*/
+				}
+				
+				if(backboard[i + 1].getPieceColor().equals( new Color(0, 156, 11)))
+				{
+					break;
 				}
 				
 				i++;
 			}
 		}
 		
-		else if( !(i == 0) && backboard[i - 1].getPieceColor().equals(Color.white))
+		if( !(i == 0) && backboard[i - 1].getPieceColor().equals(Color.white))
 		{
 			i--;
 			
 			while(i > i - (i % 8) )
 			{
-				if(backboard[i + 1].getPieceColor().equals(Color.black))
+				System.out.println(i);
+				
+				if(backboard[i - 1].getPieceColor().equals(Color.black))
 				{
 					for(int j = i; j < k; j++)
 					{
@@ -235,12 +256,82 @@ public class Board extends JFrame
 					
 					selected.setColor(Color.black);
 					selected.taken = true;
+					break;
 					/*
 					turn++;
 					count++;*/
 				}
 				
-				i++;
+				if(backboard[i - 1].getPieceColor().equals( new Color(0, 156, 11)))
+				{
+					break;
+				}
+				
+				i--;
+			}
+		}
+	}
+	
+	public void diagonalCheck(int i, int direc)
+	{
+		int k = i;
+		int r = 0;
+		
+		if(!(i == 63) && backboard[i + 9].getPieceColor().equals(Color.white) && direc == 1)
+		{
+			i += 9;
+			
+			while(r < 7 - (k % 8))
+			{
+				System.out.println(i);
+				System.out.println(r);
+				if(backboard[i + 9].getPieceColor().equals(Color.black))
+				{
+					for(int j = i; j > k; j -= 9)
+					{
+						backboard[j].setPieceColor(Color.black);
+					}
+					
+					selected.setColor(Color.black);
+					selected.taken = true;
+					break;
+				}
+				
+				if(backboard[i + 9].getPieceColor().equals( new Color(0, 156, 11)) || i + 9 > 63)
+				{
+					break;
+				}
+				
+				r++;
+				i += 9;
+			}
+		}
+		
+		if(!(i == 0) && backboard[i - 9].getPieceColor().equals(Color.white) && direc == -1)
+		{
+			i -= 9;
+			
+			while(r < k % 8)
+			{
+				if(backboard[i - 9].getPieceColor().equals(Color.black))
+				{
+					for(int j = i; j < k; j += 9)
+					{
+						backboard[j].setPieceColor(Color.black);
+					}
+					
+					selected.setColor(Color.black);
+					selected.taken = true;
+					break;
+				}
+				
+				if(backboard[i - 9].getPieceColor().equals( new Color(0, 156, 11)) || i - 9 < 0)
+				{
+					break;
+				}
+				
+				r++;
+				i -= 9;
 			}
 		}
 	}
@@ -253,7 +344,9 @@ public class Board extends JFrame
 		
 		if(turn % 2 == 0)
 		{
-			horizontalCheck(i , 1);
+			horizontalCheck(i, 1);
+			horizontalCheck(i, -1);
+			diagonalCheck(i, 1);
 			
 			if(i == 0)
 			{
@@ -261,27 +354,6 @@ public class Board extends JFrame
 				
 				//i = k;
 				
-				if(backboard[i + 9].getPieceColor().equals(Color.white))
-				{
-					i += 9;
-					
-					while(i < 63)
-					{
-						if(backboard[i + 9].getPieceColor().equals(Color.black))
-						{
-							for(int j = i; j > 0; j -= 9)
-							{
-								backboard[j].setPieceColor(Color.black);
-							}
-							
-							selected.setColor(Color.black);
-							selected.taken = true;
-							break;
-						}
-						
-						i += 9;
-					}
-				}
 				
 				i = k;
 				
@@ -300,6 +372,7 @@ public class Board extends JFrame
 							
 							selected.setColor(Color.black);
 							selected.taken = true;
+							break;
 						}
 						
 						i += 8;
@@ -326,7 +399,7 @@ public class Board extends JFrame
 		public void mousePressed(MouseEvent e)
 		{	
 			System.out.println("tile first");
-			System.out.println("Postition: " + selected.getIndex() + " " + turn + " Count: " + count);
+			System.out.println("Postition: " + selected.getIndex() + " " + turn + " Count: " + count + "  " + (selected.getIndex() % 8));
 			
 			//canPlaceCheck(selected.getIndex());
 			
@@ -344,6 +417,12 @@ public class Board extends JFrame
 				
 				
 				isSurrounding(selected.getIndex());
+				
+				if(selected.taken)
+				{
+					turn++;
+					count++;
+				}
 			}
 			
 			System.out.println();
@@ -353,11 +432,7 @@ public class Board extends JFrame
 		
 		public void mouseReleased(MouseEvent e)
 		{
-			if(selected.taken)
-			{
-				turn++;
-				count++;
-			}
+
 			//selected.taken = true;
 			repaint();
 		}
