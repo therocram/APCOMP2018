@@ -6,10 +6,13 @@ public class Circle
 	private int centerX, centerY, radius;
 	private Color color;
 	public boolean taken = false;
+	private boolean canPlace = false;
 	private int index;
 	
 	////	Constructors
 	
+
+
 	//Default
 	public Circle()
 	{
@@ -63,6 +66,12 @@ public class Circle
 	{
 		return index;
 	}
+	
+	public boolean isCanPlace() 
+	{
+		return canPlace;
+	}
+
 
 	
 	public boolean containsPoint(int x, int y)
@@ -104,6 +113,12 @@ public class Circle
 	public void setIndex(int i) 
 	{
 		index = i;
+	}
+	
+
+	public void setCanPlace(boolean canPlace) 
+	{
+		this.canPlace = canPlace;
 	}
 	
 	//// Graphics

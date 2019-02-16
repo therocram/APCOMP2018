@@ -57,6 +57,11 @@ public class Tile extends JPanel
 		piece.setIndex(i);
 	}
 	
+	public void setCanPlace(boolean canPlace)
+	{
+		piece.setCanPlace(canPlace);
+	}
+	
 	
 	////	Accessors
 	public Color getPieceColor()
@@ -67,6 +72,11 @@ public class Tile extends JPanel
 	public int getIndex() 
 	{
 		return piece.getIndex();
+	}
+	
+	public boolean isCanPlace()
+	{
+		return piece.isCanPlace();
 	}
 
 	
