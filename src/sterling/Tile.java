@@ -1,8 +1,6 @@
 package sterling;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
+import java.awt.event.*;
 import javax.swing.*;
 
 public class Tile extends JPanel
@@ -23,7 +21,10 @@ public class Tile extends JPanel
 		
 		// Instantiates piece, setting it at a position relative to the tile
 		// and setting the color the same as the tile
-		piece = new Circle(getX() + 37, getY() + 27, 20, new Color(0, 156, 11));
+		piece = new Circle(getX() + 37, getY() + 29, 25, new Color(0, 156, 11));
+		
+		//addComponentListener(new ComponentAdapter()); 
+		
 	}
 	
 	
@@ -56,12 +57,7 @@ public class Tile extends JPanel
 	{
 		piece.setIndex(i);
 	}
-	
-	public void setCanPlace(boolean canPlace)
-	{
-		piece.setCanPlace(canPlace);
-	}
-	
+
 	
 	////	Accessors
 	public Color getPieceColor()
@@ -72,11 +68,6 @@ public class Tile extends JPanel
 	public int getIndex() 
 	{
 		return piece.getIndex();
-	}
-	
-	public boolean isCanPlace()
-	{
-		return piece.isCanPlace();
 	}
 
 	
@@ -91,8 +82,33 @@ public class Tile extends JPanel
 		
 	}
 
-	
-	
+	private class ComponentAdapter implements ComponentListener
+	{
+		public void componentResized(ComponentEvent componentEvent) 
+	    {
+	        piece.setX(getX() + 37);
+	        piece.setY(getY() + 29);
+	        repaint();
+	    }
+
+		
+		public void componentHidden(ComponentEvent e) 
+		{
+			
+		}
+
+		
+		public void componentMoved(ComponentEvent e) 
+		{
+			
+		}
+
+		
+		public void componentShown(ComponentEvent e) 
+		{
+			
+		}
+	}
 	
 	
 	
