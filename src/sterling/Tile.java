@@ -5,7 +5,10 @@ import javax.swing.*;
 
 public class Tile extends JPanel
 {
-	//private Color color;
+	/**
+	 *  Version 1
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	//Assigns a circle to Tile
 	private Circle piece;
@@ -16,14 +19,12 @@ public class Tile extends JPanel
 		//Calls JPanel constructor
 		super();
 		
-		//Attaches senseor to detect mouse input
+		//Attaches sensor to detect mouse input
 		addMouseListener(new PanelListener());
 		
 		// Instantiates piece, setting it at a position relative to the tile
 		// and setting the color the same as the tile
-		piece = new Circle(getX() + 37, getY() + 29, 25, new Color(0, 156, 11));
-		
-		//addComponentListener(new ComponentAdapter()); 
+		piece = new Circle(getX() + 37, getY() + 29, 25, new Color(0, 156, 11)); 
 		
 	}
 	
@@ -80,36 +81,6 @@ public class Tile extends JPanel
 			Board.selected = piece;
 		}
 		
-	}
-
-	private class ComponentAdapter implements ComponentListener
-	{
-		public void componentResized(ComponentEvent componentEvent) 
-	    {
-	        piece.setX(getX() + 37);
-	        piece.setY(getY() + 29);
-	        repaint();
-	    }
-
-		
-		public void componentHidden(ComponentEvent e) 
-		{
-			
-		}
-
-		
-		public void componentMoved(ComponentEvent e) 
-		{
-			
-		}
-
-		
-		public void componentShown(ComponentEvent e) 
-		{
-			
-		}
-	}
-	
-	
+	}	
 	
 }

@@ -3,9 +3,16 @@ import java.awt.*;
 
 public class Circle 
 {
+	//Variables for center point dimensions and radius
 	private int centerX, centerY, radius;
+	
+	//Keeps track of color
 	private Color color;
+	
+	//Keeps track of whether or not the tile has been taken
 	public boolean taken = false;
+	
+	//Invaluable variable that tracks the circle's index
 	private int index;
 	
 	////	Constructors
@@ -66,6 +73,7 @@ public class Circle
 		return index;
 	}
 
+	//Detects if inputed point lies on circle (never used but there if needed)
 	
 	public boolean containsPoint(int x, int y)
 	{
