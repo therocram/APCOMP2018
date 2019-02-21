@@ -16,7 +16,7 @@ public class Board extends JFrame
 	private Tile[] backboard = new Tile[64];
 	
 	//Keeps track of the number of tiles on the board
-	private int count = 4;
+	private int count = 0;
 	
 	//Keeps track of the last clicked circle 
 	static Circle selected;
@@ -531,6 +531,7 @@ public class Board extends JFrame
 				
 				//Sets turn to zero, which allows for game functions to begin
 				turn = 0;
+				count = 4;
 				
 				//Sets turn indicator to black to indicate the start of the game
 				turnPanel.setBackground(Color.black);
@@ -638,6 +639,7 @@ public class Board extends JFrame
 				
 				//Effectively restarts the game
 				turn = -1;
+				count = 0;
 			}
 		}
 	}
