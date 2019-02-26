@@ -21,7 +21,7 @@ public class DeckTester {
 			elevens.deal();
 		}*/
 	
-		elevens.shuffle();
+		//elevens.shuffle();
 		
 		System.out.println(elevens.toString());
 		

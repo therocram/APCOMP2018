@@ -86,6 +86,8 @@ public class Deck {
 			cards.set(r, new Card(cards.get(k).rank(), cards.get(k).suit() , cards.get(k).pointValue()));
 			cards.set(k, new Card(t.rank(), t.suit(), t.pointValue()));
 		}
+		
+		size = cards.size();
 	}
 
 	/**
