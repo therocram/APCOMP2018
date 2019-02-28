@@ -71,6 +71,7 @@ public class ElevensBoard extends Board {
 	{
 		List<Integer> cIndexes = cardIndexes();
 		
+		return containsPairSum11(cIndexes) || containsJQK(cIndexes);
 		
 	}
 
