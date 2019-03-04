@@ -171,7 +171,7 @@ public class Board extends JFrame
 					}
 					
 					selected.setColor(setColor);
-					selected.taken = true;
+					selected.setTaken(true);
 					break;
 				}
 				
@@ -204,7 +204,7 @@ public class Board extends JFrame
 					}
 					
 					selected.setColor(setColor);
-					selected.taken = true;
+					selected.setTaken(true);
 					break;
 				}
 				
@@ -243,7 +243,7 @@ public class Board extends JFrame
 					}
 					
 					selected.setColor(setColor);
-					selected.taken = true;
+					selected.setTaken(true);
 					break;
 				}
 				
@@ -278,7 +278,7 @@ public class Board extends JFrame
 					}
 					
 					selected.setColor(setColor);
-					selected.taken = true;
+					selected.setTaken(true);
 					break;
 				}
 				
@@ -312,7 +312,7 @@ public class Board extends JFrame
 					}
 					
 					selected.setColor(setColor);
-					selected.taken = true;
+					selected.setTaken(true);
 					break;
 				}
 				
@@ -346,7 +346,7 @@ public class Board extends JFrame
 					}
 					
 					selected.setColor(setColor);
-					selected.taken = true;
+					selected.setTaken(true);
 					break;
 				}
 				
@@ -386,7 +386,7 @@ public class Board extends JFrame
 					}
 					
 					selected.setColor(setColor);
-					selected.taken = true;
+					selected.setTaken(true);
 					break;
 				}
 				
@@ -420,7 +420,7 @@ public class Board extends JFrame
 					}
 					
 					selected.setColor(setColor);
-					selected.taken = true;
+					selected.setTaken(true);
 					break;
 				}
 				
@@ -470,13 +470,13 @@ public class Board extends JFrame
 		public void mousePressed(MouseEvent e)
 		{				
 			//First checks if circle on clicked tile has already been "taken"
-			if(!selected.taken && turn >= 0)
+			if(!selected.isTaken() && turn >= 0)
 			{				
 				//Calls method for checking surroundings for tiles (according to the rules)
 				isSurrounding(selected.getIndex());
 				
 				//If the tile ends up being "taken" (which is determined by the isSurrounding method)
-				if(selected.taken)
+				if(selected.isTaken())
 				{
 					//Advances turn count and tile count
 					turn++;
@@ -518,16 +518,16 @@ public class Board extends JFrame
 			{
 				//Sets the original 4 pieces on the board
 				backboard[27].setPieceColor(Color.white);
-				backboard[27].setPieceTaken();
+				backboard[27].setPieceTaken(true);
 				
 				backboard[28].setPieceColor(Color.black);
-				backboard[28].setPieceTaken();
+				backboard[28].setPieceTaken(true);
 				
 				backboard[35].setPieceColor(Color.black);
-				backboard[35].setPieceTaken();
+				backboard[35].setPieceTaken(true);
 				
 				backboard[36].setPieceColor(Color.white);
-				backboard[36].setPieceTaken();
+				backboard[36].setPieceTaken(true);
 				
 				//Sets turn to zero, which allows for game functions to begin
 				turn = 0;
@@ -631,6 +631,7 @@ public class Board extends JFrame
 				{
 					backboard[i].setBackground(new Color(0, 156, 11));
 					backboard[i].setPieceColor(new Color(0, 156, 11));
+					backboard[i].setPieceTaken(false);
 				}
 				
 				//Sets turn panel to a color such that it blends in and is rendered invisible

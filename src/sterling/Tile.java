@@ -49,9 +49,9 @@ public class Tile extends JPanel
 		repaint();
 	}
 	
-	public void setPieceTaken()
+	public void setPieceTaken(boolean taken)
 	{
-		piece.taken = true;
+		piece.setTaken(taken);
 	}
 	
 	public void setIndex(int i) 

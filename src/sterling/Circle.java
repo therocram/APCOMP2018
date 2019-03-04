@@ -10,7 +10,7 @@ public class Circle
 	private Color color;
 	
 	//Keeps track of whether or not the tile has been taken
-	public boolean taken = false;
+	private boolean taken = false;
 	
 	//Invaluable variable that tracks the circle's index
 	private int index;
@@ -72,6 +72,11 @@ public class Circle
 	{
 		return index;
 	}
+	
+	public boolean isTaken()
+	{
+		return taken;
+	}
 
 	//Detects if inputed point lies on circle (never used but there if needed)
 	
@@ -114,6 +119,11 @@ public class Circle
 	public void setIndex(int i) 
 	{
 		index = i;
+	}
+	
+	public void setTaken(boolean t)
+	{
+		taken = t;
 	}
 	
 	//// Graphics
