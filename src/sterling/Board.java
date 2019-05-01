@@ -589,7 +589,7 @@ public class Board extends JFrame
 				JOptionPane.showMessageDialog(Board.this, "Game has not started. To start game, press \"Start\"", infoTitle, 1);
 			}
 			
-			//Activates endgame protocolsd
+			//Activates endgame protocols
 			else
 			{
 				//Tells user how many tiles were placed during the match
