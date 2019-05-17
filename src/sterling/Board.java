@@ -8,7 +8,7 @@ import java.net.*;
 public class Board extends JFrame
 {
 	/**
-	 *  Version 1
+	 *  Version 1.1
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -599,14 +599,14 @@ public class Board extends JFrame
 				int black = 0, white = 0;
 				
 				//Searches through backboard completely and counts how many of each color are present
-				for(int i = 0; i < backboard.length; i++)
+				for(Tile t : backboard)
 				{
-					if(backboard[i].getPieceColor().equals(Color.white))
+					if(t.getPieceColor().equals(Color.white))
 					{
 						white++;
 					}
 					
-					if(backboard[i].getPieceColor().equals(Color.black))
+					if(t.getPieceColor().equals(Color.black))
 					{
 						black++;
 					}
@@ -627,11 +627,11 @@ public class Board extends JFrame
 				}
 				
 				//Resets board with neutral color
-				for(int i = 0; i < backboard.length; i++)
+				for(Tile t : backboard)
 				{
-					backboard[i].setBackground(new Color(0, 156, 11));
-					backboard[i].setPieceColor(new Color(0, 156, 11));
-					backboard[i].setPieceTaken(false);
+					t.setBackground(new Color(0, 156, 11));
+					t.setPieceColor(new Color(0, 156, 11));
+					t.setPieceTaken(false);
 				}
 				
 				//Sets turn panel to a color such that it blends in and is rendered invisible

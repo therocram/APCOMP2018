@@ -24,7 +24,7 @@ public class SelectionInt extends ArrayInt
 		{
 			int minIndex = i;
 			
-			for(int j = i + 1; j < this.size(); i++)
+			for(int j = i + 1; j < this.size(); j++)
 			{
 				if(get(j) < get(minIndex))
 				{

@@ -1,5 +1,6 @@
 package sortPractice;
 
+
 public class MergeInt extends ArrayInt {
 
 	public MergeInt() 
@@ -21,6 +22,11 @@ public class MergeInt extends ArrayInt {
 	public void sort() 
 	{
 		MergeInt temp = new MergeInt(size());
+		
+		for(int i = 0; i < size(); i++)
+		{
+			temp.add(0);
+		}
 		
 		mergeSortHelper(this, 0, size() - 1, temp);
 		
@@ -51,7 +57,7 @@ public class MergeInt extends ArrayInt {
 				i++;
 			}
 			
-			else if(elements.get(j) > elements.get(i))
+			else
 			{
 				temp.set(k, elements.get(j));
 				j++;
